@@ -1,494 +1,618 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disha Bothra | Portfolio</title>
-    <link rel="icon" href="images/Portfolio Favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disha Bothra — Creative Technologist</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons (using kit-free CDN, all-min includes solid + brands) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Portfolio Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="site-header">
-        <div class="container header-layout">
-            <div class="logo">Disha Bothra<span>.</span></div>
-            <nav aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li>
-                        <button id="theme-toggle" class="theme-btn" aria-label="Switch to Dark Mode">
-                            <i class="fas fa-sun sun-icon"></i>
-                            <i class="fas fa-moon moon-icon" style="display:none;"></i>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Ambient Orbs -->
+  <div class="orb-field" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Page Loader -->
+  <div id="loader" role="status" aria-label="Loading">
+    <div class="loader-name">Disha Bothra</div>
+    <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+    <div class="loader-pct">Loading...</div>
+  </div>
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-layout">
+      <div class="logo">DB<span class="logo-dot">.</span></div>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#certifications">Certs</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+              <i class="fas fa-sun sun-icon"></i>
+              <i class="fas fa-moon moon-icon"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <div class="hero-greeting">
+          <div class="pulse-dot"></div>
+          Open to opportunities &nbsp;·&nbsp; B.Tech CSE &nbsp;·&nbsp; Manipal University Jaipur
         </div>
-    </header>
 
-    <main id="main-content">
-        
-        <section class="hero">
-            <div class="container hero-content reveal">
-                <span class="greeting">Hello, I'm</span>
-                <h1>Disha Bothra</h1>
-                <h2 class="gradient-text">A Creative Technologist and B.Tech CSE Student<br>blending design aesthetics with engineering logic<br>to build tech that looks good and works smart.<br></h2>
-                <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">Contact Me</a>
-                </div>
+        <h1 class="hero-name">
+          <span class="hero-name-word">DISHA</span>
+          <span class="hero-name-word hero-name-colored">BOTHRA</span>
+        </h1>
+
+        <p class="hero-role">
+          Creative Technologist &nbsp;&middot;&nbsp;
+          <span class="typed-role" id="typed-text"></span><span class="typed-cursor">|</span>
+        </p>
+
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i> Let's Connect
+          </a>
+          <a href="#projects" class="btn btn-outline">
+            <i class="fas fa-eye"></i> View Work
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-chip">
+            <span class="stat-num">4+</span>
+            <span class="stat-label">Experiences</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num">7+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num">2+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Skill Areas</span>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-line"></div>
+        Scroll
+      </div>
+
+    </section>
+
+    <!-- Marquee Strip -->
+    <div class="marquee-section" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item">HTML5 <span class="dot-sep"></span></div>
+        <div class="marquee-item">CSS3 <span class="dot-sep"></span></div>
+        <div class="marquee-item">JavaScript <span class="dot-sep"></span></div>
+        <div class="marquee-item">React.js <span class="dot-sep"></span></div>
+        <div class="marquee-item">UI/UX Design <span class="dot-sep"></span></div>
+        <div class="marquee-item">Adobe Photoshop <span class="dot-sep"></span></div>
+        <div class="marquee-item">Adobe Illustrator <span class="dot-sep"></span></div>
+        <div class="marquee-item">Power BI <span class="dot-sep"></span></div>
+        <div class="marquee-item">Java <span class="dot-sep"></span></div>
+        <div class="marquee-item">Python <span class="dot-sep"></span></div>
+        <div class="marquee-item">Git &amp; GitHub <span class="dot-sep"></span></div>
+        <div class="marquee-item">Node.js <span class="dot-sep"></span></div>
+        <div class="marquee-item">Canva <span class="dot-sep"></span></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee-item">HTML5 <span class="dot-sep"></span></div>
+        <div class="marquee-item">CSS3 <span class="dot-sep"></span></div>
+        <div class="marquee-item">JavaScript <span class="dot-sep"></span></div>
+        <div class="marquee-item">React.js <span class="dot-sep"></span></div>
+        <div class="marquee-item">UI/UX Design <span class="dot-sep"></span></div>
+        <div class="marquee-item">Adobe Photoshop <span class="dot-sep"></span></div>
+        <div class="marquee-item">Adobe Illustrator <span class="dot-sep"></span></div>
+        <div class="marquee-item">Power BI <span class="dot-sep"></span></div>
+        <div class="marquee-item">Java <span class="dot-sep"></span></div>
+        <div class="marquee-item">Python <span class="dot-sep"></span></div>
+        <div class="marquee-item">Git &amp; GitHub <span class="dot-sep"></span></div>
+        <div class="marquee-item">Node.js <span class="dot-sep"></span></div>
+        <div class="marquee-item">Canva <span class="dot-sep"></span></div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <div class="section-eyebrow">01 &mdash; About</div>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="card about-card">
+        <p>
+          B.Tech CSE Student &middot; <strong>Creative Technologist</strong> &middot; Design + Code Enthusiast<br><br>
+          I'm an incoming Computer Science Engineering student, passionate about building tech that looks good and works smart.
+          With a foundation in <strong>HTML, CSS, JavaScript, Java, C</strong>, and creative tools like
+          <strong>Photoshop, Illustrator, and Canva</strong>, I enjoy blending code and design to solve problems
+          in innovative, user-friendly ways.<br><br>
+          From developing real-time web applications to designing brand assets for school events, I've explored
+          the power of technology to drive impact. I'm deeply interested in
+          <strong>web development, graphic design, and tech-for-good initiatives</strong> — and I thrive in
+          team settings that challenge me to think outside the box.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section reveal">
+      <div class="section-eyebrow">02 &mdash; Experience</div>
+      <h2 class="section-title">Where I've Worked</h2>
+
+      <div class="card exp-card reveal">
+        <div class="org-header">
+          <div class="icon-box"><i class="fas fa-microchip"></i></div>
+          <div class="org-info">
+            <h3>IEEE CIS MUJ</h3>
+            <h4>Student Chapter &bull; Jaipur, India</h4>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h3>Technical Webmaster &mdash; Core Committee</h3>
+              <span class="date">May 2026 &ndash; Present</span>
             </div>
-        </section>
-
-        <section id="about" class="section container reveal">
-            <h2 class="section-title">About Me</h2>
-            <div class="card about-card">
-                <p>
-                    B.Tech CSE Student | Creative Technologist | Design + Code Enthusiast<br>I’m an incoming Computer Science Engineering student, passionate about building tech that looks good and works smart. With a foundation in <strong>HTML, CSS, JavaScript, Java, C</strong>, and creative tools like <strong>Photoshop, Illustrator, and Canva</strong>, I enjoy blending code and design to solve problems in innovative, user-friendly ways.<br>From developing basic applications to designing brand assets for school events, I’ve explored the power of technology to drive impact, collaboration, and creativity. I'm also deeply interested in <strong>web development, and tech-for-good initiatives</strong>, and love working in team settings that challenge me to think outside the box.
-                </p>
+          </div>
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h3>Technical Team &mdash; Junior Working Team</h3>
+              <span class="date">Dec 2025 &ndash; May 2026</span>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
 
-        <section id="experience" class="section container reveal">
-            <h2 class="section-title">Experience</h2>
-
-            <div class="card experience-group">
-                <div class="org-header">
-                    <div class="icon-box"><i class="fas fa-users"></i></div> <div class="org-info">
-                        <h3>IEEE CIS MUJ</h3>
-                        <h4>Student Chapter &bull; Jaipur, India</h4>
-                    </div>
-                </div>
-                <div class="roles-container">
-                    <div class="role-item">
-                        <div class="role-dot"></div>
-                        <div class="role-content">
-                            <h3>Technical Webmaster - Core Committee</h3>
-                            <span class="date">May 2026 - Present</span>
-                        </div>
-                    </div>
-                    <div class="role-item">
-                        <div class="role-dot"></div>
-                        <div class="role-content">
-                            <h3>Technical Team - Junior Working Team</h3>
-                            <span class="date">Dec 2025 - May 2026</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="card exp-card reveal">
+        <div class="org-header">
+          <div class="icon-box"><i class="fas fa-shield-halved"></i></div>
+          <div class="org-info">
+            <h3>Cyber Space Club</h3>
+            <h4>Student Organization &bull; Jaipur, India</h4>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h3>Junior Coordinator, Graphic Design Team</h3>
+              <span class="date">Nov 2025 &ndash; Present</span>
             </div>
-
-            <div class="card experience-group">
-                <div class="org-header">
-                    <div class="icon-box"><i class="fas fa-users"></i></div> <div class="org-info">
-                        <h3>Cyber Space Club</h3>
-                        <h4>Student Organization &bull; Jaipur, India</h4>
-                    </div>
-                </div>
-                <div class="roles-container">
-                    <div class="role-item">
-                        <div class="role-dot"></div>
-                        <div class="role-content">
-                            <h3>Junior Coordinator of Graphic Design Team</h3>
-                            <span class="date">Nov 2025 - Present</span>
-                        </div>
-                    </div>
-                    <div class="role-item">
-                        <div class="role-dot"></div>
-                        <div class="role-content">
-                            <h3>Graphic Design Team - Junior Working Team</h3>
-                            <span class="date">Oct 2025 - Nov 2025</span>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h3>Graphic Design &mdash; Junior Working Team</h3>
+              <span class="date">Oct 2025 &ndash; Nov 2025</span>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="card experience-group">
-                <div class="org-header">
-                    <div class="icon-box"><i class="fas fa-laptop-code"></i></div> <div class="org-info">
-                        <h3>Tollygunge Kanya Mandal</h3>
-                        <h4>NGO / Organization &bull; Kolkata, India</h4>
-                    </div>
-                </div>
-                <div class="roles-container single-role">
-                    <div class="role-item">
-                        <div class="role-dot"></div>
-                        <div class="role-content">
-                            <h3>Creative Designer</h3>
-                            <span class="date">Jan 2024 - Oct 2024</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="card exp-card reveal">
+        <div class="org-header">
+          <div class="icon-box"><i class="fas fa-heart"></i></div>
+          <div class="org-info">
+            <h3>Tollygunge Kanya Mandal</h3>
+            <h4>NGO &bull; Kolkata, India</h4>
+          </div>
+        </div>
+        <div class="timeline single">
+          <div class="role-item">
+            <div class="role-content">
+              <h3>Creative Designer</h3>
+              <span class="date">Jan 2024 &ndash; Oct 2024</span>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="card experience-group">
-                <div class="org-header">
-                    <div class="icon-box"><i class="fas fa-calendar-check"></i></div> <div class="org-info">
-                        <h3>South City International School</h3>
-                        <h4>Educational Institution &bull; Kolkata, India</h4>
-                    </div>
-                </div>
-                <div class="roles-container">
-                    <div class="role-item">
-                        <div class="role-dot"></div>
-                        <div class="role-content">
-                            <h3>Creative Head - Morpheus 2024</h3>
-                            <span class="date">May 2024 - Jul 2024</span>
-                        </div>
-                    </div>
-                    <div class="role-item">
-                        <div class="role-dot"></div>
-                        <div class="role-content">
-                            <h3>Event Co-Head - Revamped - Morpheus 2023</h3>
-                            <span class="date">May 2023 - Jul 2023</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="card exp-card reveal">
+        <div class="org-header">
+          <div class="icon-box"><i class="fas fa-school"></i></div>
+          <div class="org-info">
+            <h3>South City International School</h3>
+            <h4>Educational Institution &bull; Kolkata, India</h4>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h3>Creative Head &mdash; Morpheus 2024</h3>
+              <span class="date">May 2024 &ndash; Jul 2024</span>
             </div>
-        </section>
-
-        <section id="education" class="section container reveal">
-            <h2 class="section-title">Education</h2>
-
-            <div class="card education-card">
-                <div class="card-header">
-                    <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="edu-info">
-                        <h3>Bachelor of Technology in Computer Science and Engineering</h3>
-                        <h4>Manipal University Jaipur</h4>
-                        <span class="date">2025 - 2029</span>
-                    </div>
-                </div>
+          </div>
+          <div class="role-item">
+            <div class="role-dot"></div>
+            <div class="role-content">
+              <h3>Event Co-Head &mdash; Morpheus 2023</h3>
+              <span class="date">May 2023 &ndash; Jul 2023</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="card education-card">
-                <div class="card-header">
-                    <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="edu-info">
-                        <h3>Class 12 (ISC)</h3>
-                        <h4>South City International School</h4>
-                        <span class="date">2010 - 2025</span>
-                    </div>
-                </div>
+    <!-- EDUCATION -->
+    <section id="education" class="section reveal">
+      <div class="section-eyebrow">03 &mdash; Education</div>
+      <h2 class="section-title">Academic Journey</h2>
+
+      <div class="card edu-card reveal">
+        <div class="card-header">
+          <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
+          <div class="edu-info">
+            <h3>B.Tech Computer Science and Engineering</h3>
+            <h4>Manipal University Jaipur</h4>
+            <span class="date">2025 &ndash; 2029</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card edu-card reveal">
+        <div class="card-header">
+          <div class="icon-box"><i class="fas fa-book-open"></i></div>
+          <div class="edu-info">
+            <h3>Class 12 (ISC)</h3>
+            <h4>South City International School, Kolkata</h4>
+            <span class="date">2010 &ndash; 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section reveal">
+      <div class="section-eyebrow">04 &mdash; Certifications</div>
+      <h2 class="section-title">Licenses &amp; Certificates</h2>
+
+      <h3 class="subsection-title"><i class="fas fa-certificate"></i> Professional Certifications</h3>
+
+      <div class="card cert-card reveal">
+        <div class="cert-thumb">
+          <img src="images/IBM Front-End Development Career Certificate_page-0001.jpg" alt="IBM Front-End Certificate" loading="lazy">
+        </div>
+        <div class="cert-info">
+          <h3>IBM Front-End Developer Professional Certificate</h3>
+          <h4>IBM &bull; Coursera</h4>
+          <span class="date">Issued Dec 2025</span>
+          <div class="tags">
+            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
+            <span class="tag">React.js</span><span class="tag">Git &amp; GitHub</span><span class="tag">UI/UX</span>
+          </div>
+          <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_ibm-front-end-development-career-certificate-activity-7413185996177162241-pA7r" target="_blank" rel="noopener" class="cert-link">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <h3 class="subsection-title"><i class="fas fa-chalkboard-teacher"></i> Workshops</h3>
+
+      <div class="card cert-card reveal">
+        <div class="cert-thumb">
+          <img src="images/IIT Bombay Techfest Robotics Workshop.jpg" alt="Robotics Workshop" loading="lazy">
+        </div>
+        <div class="cert-info">
+          <h3>Robotics Workshop</h3>
+          <h4>Techfest, IIT Bombay</h4>
+          <span class="date">Issued Jan 2025</span>
+          <div class="tags">
+            <span class="tag">Robotics</span><span class="tag">Automation</span>
+            <span class="tag">Sensors</span><span class="tag">Embedded Systems</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cert-card reveal">
+        <div class="cert-thumb">
+          <img src="images/AI Dashboards Using Microsoft Power BI - Jatan Shah_page-0001.jpg" alt="Power BI" loading="lazy">
+        </div>
+        <div class="cert-info">
+          <h3>AI Dashboards using Microsoft Power BI</h3>
+          <h4>Skill Nation</h4>
+          <span class="date">Issued April 2025</span>
+          <div class="tags">
+            <span class="tag">Power BI</span><span class="tag">Data Visualization</span><span class="tag">AI Integration</span>
+          </div>
+          <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_ai-dashboards-using-microsoft-power-bi-activity-7319977592529309698-SwZS" target="_blank" rel="noopener" class="cert-link">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card cert-card reveal">
+        <div class="cert-thumb">
+          <img src="images/Generative AI Tools_page-0001.jpg" alt="Gen AI Tools" loading="lazy">
+        </div>
+        <div class="cert-info">
+          <h3>Generative AI Tools Workshop</h3>
+          <h4>Skill Nation</h4>
+          <span class="date">Issued March 2025</span>
+          <div class="tags">
+            <span class="tag">Generative AI</span><span class="tag">Prompt Engineering</span><span class="tag">Content Creation</span>
+          </div>
+          <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_disha-bothragenerative-ai-tools-activity-7314993608518979584-7Qx-" target="_blank" rel="noopener" class="cert-link">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card cert-card reveal">
+        <div class="cert-thumb">
+          <img src="images/ChatGPT and AI in Microsoft Excel_page-0001.jpg" alt="Excel AI" loading="lazy">
+        </div>
+        <div class="cert-info">
+          <h3>ChatGPT &amp; AI in Microsoft Excel</h3>
+          <h4>Skill Nation</h4>
+          <span class="date">Issued Dec 2024</span>
+          <div class="tags">
+            <span class="tag">Microsoft Excel</span><span class="tag">ChatGPT</span><span class="tag">Data Analysis</span>
+          </div>
+          <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_certificate-of-completion-activity-7270820695167623168-PYaU" target="_blank" rel="noopener" class="cert-link">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card cert-card reveal">
+        <div class="cert-thumb">
+          <img src="images/PowerPoint Using ChatGPT and AI_page-0001.jpg" alt="PPT AI" loading="lazy">
+        </div>
+        <div class="cert-info">
+          <h3>PowerPoint Using AI &amp; ChatGPT</h3>
+          <h4>Skill Nation</h4>
+          <span class="date">Issued Feb 2024</span>
+          <div class="tags">
+            <span class="tag">PowerPoint</span><span class="tag">Presentation Design</span><span class="tag">AI Tools</span>
+          </div>
+          <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_certificate-of-completion-activity-7269655207549046784-osiw" target="_blank" rel="noopener" class="cert-link">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <h3 class="subsection-title"><i class="fas fa-trophy"></i> Management &amp; Leadership</h3>
+
+      <div class="card cert-card reveal">
+        <div class="cert-thumb">
+          <img src="images/Rewind and Recode Management.jpg" alt="Management" loading="lazy">
+        </div>
+        <div class="cert-info">
+          <h3>Rewind and Recode &mdash; Overnight Hackathon Management</h3>
+          <h4>Cyber Space Club &bull; D3-Tech Fest</h4>
+          <span class="date">Issued Oct 2025</span>
+          <div class="tags">
+            <span class="tag">Event Management</span><span class="tag">Leadership</span><span class="tag">Team Coordination</span>
+          </div>
+          <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_managementexperience-eventmanagement-leadership-activity-7413436533761888257-ntSN" target="_blank" rel="noopener" class="cert-link">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
+      <div class="section-eyebrow">05 &mdash; Projects</div>
+      <h2 class="section-title">Featured Work</h2>
+
+      <div class="filter-controls" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="js" aria-pressed="false">JavaScript</button>
+        <button class="filter-btn" data-filter="css" aria-pressed="false">Design</button>
+      </div>
+
+      <div class="gallery-grid" aria-live="polite">
+
+        <article class="project-card reveal" data-category="js">
+          <div class="proj-img-wrap">
+            <img src="images/Velocity.Blue.png" alt="Velocity Blue" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3>Velocity Blue</h3>
+            <p>A real-time velocity typing engine tracking WPM &amp; accuracy with a minimalist dark UI — built without traditional input fields.</p>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
             </div>
-        </section>
-
-        <section id="certifications" class="section container reveal">
-            <h2 class="section-title">Licenses & Certifications</h2>
-            
-            <h3 class="subsection-title"><i class="fas fa-certificate"></i> Professional Certifications</h3>
-            
-            <div class="card cert-card-enhanced">
-                <a href="#" class="cert-thumbnail">
-                    <img src="images/IBM Front-End Development Career Certificate_page-0001.jpg" alt="IBM Front-End Certificate">
-                </a>
-                <div class="cert-info-enhanced">
-                    <h3>IBM Front-End Developer Professional Certificate</h3>
-                    <h4>IBM &bull; Coursera</h4>
-                    <span class="date">Issued Dec 2025</span>
-                    <div class="tags" style="margin-top: 0.5rem; padding-top: 0.5rem; margin-bottom: 0.8rem;">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">React.js</span>
-                        <span class="tag">Git & GitHub</span>
-                        <span class="tag">UI/UX</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_ibm-front-end-development-career-certificate-activity-7413185996177162241-pA7r" target="_blank" class="project-link"> View Certificate <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+            <div class="proj-actions">
+              <a href="https://dishab777.github.io/The-Real-Time-Velocity-Typing-Engine/" target="_blank" rel="noopener" class="proj-btn proj-btn-primary">
+                <i class="fas fa-external-link-alt"></i> Live Site
+              </a>
+              <a href="https://github.com/dishab777/The-Real-Time-Velocity-Typing-Engine" target="_blank" rel="noopener" class="proj-btn proj-btn-outline">
+                <i class="fab fa-github"></i> Repository
+              </a>
             </div>
+          </div>
+        </article>
 
-            <h3 class="subsection-title"><i class="fas fa-chalkboard-teacher"></i> Workshops</h3>
-
-            <div class="card cert-card-enhanced">
-                <a href="#" class="cert-thumbnail">
-                    <img src="images/IIT Bombay Techfest Robotics Workshop.jpg" alt="Robotics Workshop Certificate">
-                </a>
-                <div class="cert-info-enhanced">
-                    <h3>Robotics Workshop</h3>
-                    <h4>Techfest, IIT Bombay</h4>
-                    <span class="date">Issued Jan 2025</span>
-                    <div class="tags" style="margin-top: 0.5rem; padding-top: 0.5rem; margin-bottom: 0.8rem;">
-                        <span class="tag">Robotics</span>
-                        <span class="tag">Automation</span>
-                        <span class="tag">Sensors</span>
-                        <span class="tag">Embedded Systems</span>
-                    </div>
-                </div>
+        <article class="project-card reveal" data-category="js">
+          <div class="proj-img-wrap">
+            <img src="images/BlueRender.png" alt="BlueRender" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3>BlueRender</h3>
+            <p>An interactive web-dev learning dashboard with collapsible sidebar navigation, live syntax highlighting, and dark/light theming.</p>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
             </div>
-
-            <div class="card cert-card-enhanced">
-                <a href="#" class="cert-thumbnail">
-                    <img src="images/AI Dashboards Using Microsoft Power BI - Jatan Shah_page-0001.jpg" alt="Power BI Certificate">
-                </a>
-                <div class="cert-info-enhanced">
-                    <h3>AI Dashboards using Microsoft Power BI</h3>
-                    <h4>Skill Nation</h4>
-                    <span class="date">Issued April 2025</span>
-                    <div class="tags" style="margin-top: 0.5rem; padding-top: 0.5rem; margin-bottom: 0.8rem;">
-                        <span class="tag">Power BI</span>
-                        <span class="tag">Data Visualization</span>
-                        <span class="tag">AI Integration</span>
-                        <span class="tag">Dashboards</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_ai-dashboards-using-microsoft-power-bi-activity-7319977592529309698-SwZS" target="_blank" class="project-link"> View Certificate <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+            <div class="proj-actions">
+              <a href="https://dishab777.github.io/BlueRender/" target="_blank" rel="noopener" class="proj-btn proj-btn-primary">
+                <i class="fas fa-external-link-alt"></i> Live Site
+              </a>
+              <a href="https://github.com/dishab777/BlueRender" target="_blank" rel="noopener" class="proj-btn proj-btn-outline">
+                <i class="fab fa-github"></i> Repository
+              </a>
             </div>
+          </div>
+        </article>
 
-            <div class="card cert-card-enhanced">
-                <a href="#" class="cert-thumbnail">
-                    <img src="images/Generative AI Tools_page-0001.jpg" alt="Generative AI Tools Certificate">
-                </a>
-                <div class="cert-info-enhanced">
-                    <h3>Generative AI Tools Workshop</h3>
-                    <h4>Skill Nation</h4>
-                    <span class="date">Issued March 2025</span>
-                    <div class="tags" style="margin-top: 0.5rem; padding-top: 0.5rem; margin-bottom: 0.8rem;">
-                        <span class="tag">Generative AI</span>
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">Content Creation</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_disha-bothragenerative-ai-tools-activity-7314993608518979584-7Qx-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZkqDkBTd55yYieq_YLzESrHgk8vNYaphQ" target="_blank" class="project-link"> View Certificate <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+      <div class="section-eyebrow">06 &mdash; Skills</div>
+
+      <!-- Terminal Block -->
+      <div class="skills-layout">
+        <div class="skills-text">
+          <h2 class="giant-title">Technical<br>Arsenal</h2>
+          <p>Specializing in building visually stunning applications using a modern stack. Engineering rigor meets creative problem-solving.</p>
+        </div>
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="t-btn red"></span>
+              <span class="t-btn yellow"></span>
+              <span class="t-btn green"></span>
             </div>
-
-            <div class="card cert-card-enhanced">
-                <a href="#" class="cert-thumbnail">
-                     <img src="images/ChatGPT and AI in Microsoft Excel_page-0001.jpg" alt="Excel AI Certificate">
-                </a>
-                <div class="cert-info-enhanced">
-                    <h3>ChatGPT & AI in Microsoft Excel</h3>
-                    <h4>Skill Nation</h4>
-                    <span class="date">Issued Dec 2024</span>
-                    <div class="tags" style="margin-top: 0.5rem; padding-top: 0.5rem; margin-bottom: 0.8rem;">
-                        <span class="tag">Microsoft Excel</span>
-                        <span class="tag">ChatGPT</span>
-                        <span class="tag">Data Analysis</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_certificate-of-completion-activity-7270820695167623168-PYaU?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZkqDkBTd55yYieq_YLzESrHgk8vNYaphQ" target="_blank" class="project-link"> View Certificate <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="card cert-card-enhanced">
-                <a href="#" class="cert-thumbnail">
-                    <img src="images/PowerPoint Using ChatGPT and AI_page-0001.jpg" alt="PowerPoint AI Certificate">
-                </a>
-                <div class="cert-info-enhanced">
-                    <h3>PowerPoint Using AI & ChatGPT</h3>
-                    <h4>Skill Nation</h4>
-                    <span class="date">Issued Feb 2024</span>
-                    <div class="tags" style="margin-top: 0.5rem; padding-top: 0.5rem; margin-bottom: 0.8rem;">
-                        <span class="tag">PowerPoint</span>
-                        <span class="tag">Presentation Design</span>
-                        <span class="tag">AI Tools</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_certificate-of-completion-activity-7269655207549046784-osiw?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZkqDkBTd55yYieq_YLzESrHgk8vNYaphQ" target="_blank" class="project-link"> View Certificate <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            </div>
-
-            <h3 class="subsection-title"><i class="fas fa-briefcase"></i> Management</h3>
-            
-            <div class="card cert-card-enhanced">
-                <a href="#" class="cert-thumbnail">
-                    <img src="images/Rewind and Recode Management.jpg" alt="Management Certificate">
-                </a>
-                <div class="cert-info-enhanced">
-                    <h3>Rewind and Recode - Overnight Hackathon Management</h3>
-                    <h4>Cyber Space Club &bull; D3-Tech Fest</h4>
-                    <span class="date">Issued Oct 2025</span>
-                    <p style="font-size: 0.9em; color: var(--text-secondary);">Certificate of Appreciation for successful organization.</p>
-                    <div class="tags" style="margin-top: 0.5rem; padding-top: 0.5rem; margin-bottom: 0.8rem;">
-                        <span class="tag">Event Management</span>
-                        <span class="tag">Leadership</span>
-                        <span class="tag">Team Coordination</span>
-                        <span class="tag">Planning</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/disha-bothra-13562228b_managementexperience-eventmanagement-leadership-activity-7413436533761888257-ntSN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZkqDkBTd55yYieq_YLzESrHgk8vNYaphQ" target="_blank" class="project-link"> View Certificate <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="projects" class="section container reveal" aria-labelledby="project-heading">
-            <h2 id="project-heading" class="section-title">Featured Projects</h2>
-            
-            <div class="filter-controls" role="group" aria-label="Filter projects">
-                <button class="filter-btn active" aria-pressed="true" data-filter="all">All</button>
-                <button class="filter-btn" aria-pressed="false" data-filter="js">JavaScript</button>
-                <button class="filter-btn" aria-pressed="false" data-filter="css">Design</button>
-            </div>
-
-            <div class="gallery-grid" aria-live="polite">
-                <article class="project-card" data-category="js">
-                    <div class="project-image-container">
-                        <img src="images/Velocity.Blue.png" alt="Screenshot of Velocity Blue Project">
-                    </div>
-                    <div class="card-content">
-                        <h3>Velocity Blue</h3>
-                        <p>A real-time velocity typing engine that tracks typing speed and accuracy.</p>
-                        <br>
-                        <p style="font-size: 0.9em; color: var(--text-secondary);">
-                            • Real-time calculation of WPM & accuracy<br>
-                            • Minimalist, dark-themed UI for focus<br>
-                            • Built without traditional input fields
-                        </p>
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <div class="card-actions">
-                            <a href="https://dishab777.github.io/The-Real-Time-Velocity-Typing-Engine/" target="_blank" class="action-btn btn-live"> View Website <i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/dishab777/The-Real-Time-Velocity-Typing-Engine" target="_blank" class="action-btn btn-repo"> View Repository <i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="skills" class="section container reveal">
-            <div class="skills-layout">
-                <div class="skills-text">
-                    <h2 class="giant-title">Technical<br>Arsenal</h2>
-                    <p>
-                        Specializing in building scalable, robust applications using a modern, type-safe stack.
-                        My approach combines engineering rigor with creative problem solving.
-                    </p>
-                </div>
-
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="t-btn red"></span>
-                            <span class="t-btn yellow"></span>
-                            <span class="t-btn green"></span>
-                        </div>
-                        <div class="terminal-title">user@disha: ~</div>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="code-line">
-                            <span class="prompt">user@disha:~$</span> <span class="cmd">npm install skills</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="output-dim">... extracting packages ...</span>
-                        </div>
-                        <br>
-                        <div class="code-block">
-<pre>
-<span class="key">"Technical Proficiency"</span>: [
-  <span class="string">"HTML5"</span>,
-  <span class="string">"CSS3 (Tailwind/Grid)"</span>,
-  <span class="string">"JavaScript (ES6+)"</span>,
-  <span class="string">"React.js"</span>,
-  <span class="string">"Node.js"</span>,
-  <span class="string">"Java"</span>,
-  <span class="string">"Python"</span>,
-  <span class="string">"C"</span>,
+            <div class="terminal-title">user@disha: ~</div>
+          </div>
+          <div class="terminal-body">
+            <div class="code-line"><span class="prompt">&#10095;</span><span class="cmd"> cat skills.json</span></div>
+            <div class="code-line"><span class="output-dim">// parsing...</span></div>
+            <br>
+            <pre><span class="key">"languages"</span>: [
+  <span class="str">"JavaScript (ES6+)"</span>, <span class="str">"Java"</span>,
+  <span class="str">"Python"</span>, <span class="str">"C"</span>, <span class="str">"HTML5"</span>, <span class="str">"CSS3"</span>
+],
+<span class="key">"frameworks"</span>: [
+  <span class="str">"React.js"</span>, <span class="str">"Node.js"</span>
 ],
 <span class="key">"tools"</span>: [
-  <span class="string">"Git & GitHub"</span>,
-  <span class="string">"VS Code"</span>,
-  <span class="string">"Canva"</span>,
-  <span class="string">"Microsoft Power BI"</span>,
-  <span class="string">"Microsoft Excel"</span>,
-  <span class="string">"Microsoft PowerPoint"</span>,
-  <span class="string">"Microsoft Word"</span>
-  <span class="string">"Adobe Photoshop"</span>,
-  <span class="string">"Adobe Illustrator"</span>
+  <span class="str">"Git &amp; GitHub"</span>, <span class="str">"VS Code"</span>,
+  <span class="str">"Adobe Photoshop"</span>,
+  <span class="str">"Adobe Illustrator"</span>,
+  <span class="str">"Canva"</span>, <span class="str">"Power BI"</span>
 ],
-<span class="key">"soft_skills"</span>: [
-  <span class="string">"Leadership"</span>,
-  <span class="string">"Event Management"</span>,
-  <span class="string">"Communication"</span>
-]
-</pre>
-                        </div>
-                        <div class="code-line blink-cursor">
-                            <span class="prompt">user@disha:~$</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="skills" class="section container reveal">
-            <h2 class="section-title">Skills</h2>
-            
-            <div class="card skill-card">
-                <h3><i class="fas fa-code"></i> Technical Proficiency</h3>
-                <div class="skills-grid">
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">C</span>
-                    <span class="skill-tag">HTML5 & CSS3</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">React.js</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Git & GitHub</span>
-                    <span class="skill-tag">Microsoft Power BI</span>
-                    <span class="skill-tag">Microsoft Excel</span>
-                    <span class="skill-tag">Microsoft PowerPoint</span>
-                    <span class="skill-tag">Microsoft Word</span>
-                </div>
-            </div>
-
-            <div class="card skill-card">
-                <h3><i class="fas fa-pencil-ruler"></i> Graphic Design</h3>
-                <div class="skills-grid">
-                    <span class="skill-tag">Adobe Photoshop</span>
-                    <span class="skill-tag">Adobe Illustrator</span>
-                    <span class="skill-tag">Canva</span>
-                    <span class="skill-tag">UI/UX Design</span>
-                </div>
-            </div>
-
-            <div class="card skill-card">
-                <h3><i class="fas fa-tools"></i> Soft Skills</h3>
-                <div class="skills-grid">
-                    <span class="skill-tag">Leadership</span>
-                    <span class="skill-tag">Event Management</span>
-                    <span class="skill-tag">People Management</span>
-                    <span class="skill-tag">Strategic Planning</span>
-                    <span class="skill-tag">Critical Thinking</span>
-                    <span class="skill-tag">Communication</span>
-                    <span class="skill-tag">Time Management</span>
-                    <span class="skill-tag">Team Work</span>
-                    <span class="skill-tag">Project Planning</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section container reveal">
-            <div class="card contact-card">
-                <h2>Let's Connect</h2>
-                <p>I'm currently open to new opportunities.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/disha-bothra-13562228b" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/dishab777" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://wa.me/919831212834" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:dishabothra07@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2024 Disha Bothra. Built with Accessible HTML & CSS.</p>
+<span class="key">"status"</span>: <span class="str">"open_to_opportunities"</span></pre>
+            <div class="code-line blink"><span class="prompt">&#10095;</span></div>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <script src="script.js"></script>
+      <!-- Skills Tag Cards -->
+      <div class="card skill-card reveal">
+        <h3><i class="fas fa-code"></i> Technical Proficiency</h3>
+        <div class="skills-grid">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">HTML5 &amp; CSS3</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">React.js</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Git &amp; GitHub</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Microsoft Excel</span>
+          <span class="skill-tag">PowerPoint</span>
+        </div>
+      </div>
+
+      <div class="card skill-card reveal">
+        <h3><i class="fas fa-pencil-ruler"></i> Graphic Design</h3>
+        <div class="skills-grid">
+          <span class="skill-tag">Adobe Photoshop</span>
+          <span class="skill-tag">Adobe Illustrator</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Brand Identity</span>
+          <span class="skill-tag">Typography</span>
+        </div>
+      </div>
+
+      <div class="card skill-card reveal">
+        <h3><i class="fas fa-users"></i> Soft Skills</h3>
+        <div class="skills-grid">
+          <span class="skill-tag">Leadership</span>
+          <span class="skill-tag">Event Management</span>
+          <span class="skill-tag">People Management</span>
+          <span class="skill-tag">Strategic Planning</span>
+          <span class="skill-tag">Critical Thinking</span>
+          <span class="skill-tag">Communication</span>
+          <span class="skill-tag">Time Management</span>
+          <span class="skill-tag">Team Work</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+      <div class="card contact-card">
+        <div class="section-eyebrow contact-eyebrow">07 &mdash; Contact</div>
+        <h2>Let's Build Together</h2>
+        <p>I'm open to internships, collabs &amp; exciting opportunities.<br>Let's create something amazing.</p>
+        <a href="mailto:dishabothra07@gmail.com" class="btn btn-primary btn-contact">
+          <i class="fas fa-paper-plane"></i> Say Hello
+        </a>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/disha-bothra-13562228b" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/dishab777" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://wa.me/919831212834" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="mailto:dishabothra07@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>&copy; 2025 <span class="footer-name">Disha Bothra</span>. Designed &amp; Built with <span class="footer-heart">&#9829;</span></p>
+  </footer>
+
+  <!-- Portfolio Script -->
+  <script src="script.js"></script>
 </body>
 </html>
