@@ -1,0 +1,2 @@
+# Exclude certificate images from being uploaded to GitHub
+images/certificates/
