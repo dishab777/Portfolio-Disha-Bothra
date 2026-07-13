@@ -1663,3 +1663,429 @@ body.light-mode .terminal-body {
     transform: none;
   }
 }
+
+/* ============================================================
+   3D AESTHETIC UPGRADE — v3.0
+   Aurora · Glassmorphism · Particle Canvas · LinkedIn-style Exp
+   ============================================================ */
+
+/* ---------- AURORA BACKGROUND ORBS ---------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 15% 20%, rgba(74,158,255,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 85% 75%, rgba(168,85,247,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 700px 400px at 50% 100%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: auroraDrift 20s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift {
+  0%   { opacity: 0.7; transform: scale(1) translateY(0); }
+  50%  { opacity: 1;   transform: scale(1.05) translateY(-20px); }
+  100% { opacity: 0.8; transform: scale(0.98) translateY(10px); }
+}
+
+/* ---------- PARTICLE CANVAS ---------- */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ---------- GLOBAL 3D PERSPECTIVE ---------- */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- CARD SHINE (Holographic sweep) ---------- */
+.card-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255,255,255,0.03) 30%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.03) 70%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: 2;
+  transform: translateX(-100%);
+}
+
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tilt-card:hover .card-shine {
+  opacity: 1;
+  animation: shineSweep 0.7s var(--ease-smooth) forwards;
+}
+
+@keyframes shineSweep {
+  from { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+  50%  { opacity: 1; }
+  to   { transform: translateX(200%) skewX(-15deg); opacity: 0; }
+}
+
+/* Enhanced card depth on hover */
+.tilt-card:hover {
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.4),
+    0 8px 24px rgba(0,0,0,0.3),
+    0 24px 64px rgba(0,0,0,0.2),
+    0 0 0 1px rgba(74,158,255,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ---------- SECTION TITLE GLOW ---------- */
+.section-title {
+  text-shadow: 0 0 60px rgba(74,158,255,0.12);
+}
+
+/* ---------- EXPERIENCE CARD GRID ---------- */
+#experience {
+  position: relative;
+  z-index: 1;
+}
+
+#experience::before { display: none; } /* Remove old timeline line */
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 12px;
+}
+
+/* ---------- EXPERIENCE CARD ---------- */
+.exp-card {
+  background: rgba(15, 20, 25, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(74, 158, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.15s linear,
+    border-color 0.3s,
+    box-shadow 0.4s;
+  cursor: default;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(74,158,255,0.4), rgba(168,85,247,0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.exp-card:hover::before { opacity: 1; }
+
+.exp-card:hover {
+  border-color: rgba(74,158,255,0.25);
+}
+
+/* Radial glow behind card */
+.exp-card-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,158,255,0.1) 0%, transparent 70%);
+  top: -60px;
+  right: -60px;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  opacity: 0;
+}
+.exp-card:hover .exp-card-glow { opacity: 1; }
+
+/* Card header (logo + org info) */
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+/* Org logo circle */
+.exp-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+}
+
+.exp-card:hover .exp-logo {
+  transform: translateZ(8px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.exp-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.exp-logo-initials {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.exp-org-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.exp-org-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Role title */
+.exp-role {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+/* Date + Location chips */
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.exp-date,
+.exp-location {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.exp-date i, .exp-location i {
+  color: var(--accent-blue);
+  font-size: 0.6rem;
+}
+
+/* Type badge */
+.exp-type-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.badge-blue   { background: rgba(74,158,255,0.12);  color: #4a9eff; border: 1px solid rgba(74,158,255,0.25); }
+.badge-purple { background: rgba(124,58,237,0.12);  color: #a78bfa; border: 1px solid rgba(124,58,237,0.25); }
+.badge-orange { background: rgba(245,158,11,0.12);  color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+.badge-pink   { background: rgba(236,72,153,0.12);  color: #f472b6; border: 1px solid rgba(236,72,153,0.25); }
+.badge-green  { background: rgba(16,185,129,0.12);  color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+.badge-cyan   { background: rgba(6,182,212,0.12);   color: #22d3ee; border: 1px solid rgba(6,182,212,0.25); }
+.badge-rose   { background: rgba(244,63,94,0.12);   color: #fb7185; border: 1px solid rgba(244,63,94,0.25); }
+.badge-gold   { background: rgba(201,168,76,0.12);  color: #c9a84c; border: 1px solid rgba(201,168,76,0.25); }
+
+/* Sub-roles */
+.exp-subroles {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 12px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-subrole {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.subrole-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  flex-shrink: 0;
+  margin-top: 5px;
+  box-shadow: 0 0 6px rgba(74,158,255,0.5);
+}
+
+.subrole-title {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.subrole-period {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ---------- ENHANCED CERT CARDS (glassmorphism + 3D) ---------- */
+.cert-card {
+  background: rgba(15, 20, 25, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(74, 158, 255, 0.1);
+}
+
+.cert-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(74,158,255,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ---------- ENHANCED EDU CARDS (glassmorphism) ---------- */
+.edu-card {
+  background: rgba(15, 20, 25, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(74, 158, 255, 0.08);
+}
+
+/* ---------- ENHANCED PROJECT CARDS ---------- */
+.project-card {
+  background: rgba(15, 20, 25, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ---------- ENHANCED ABOUT CARD ---------- */
+.about-card {
+  background: rgba(12, 16, 22, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(74, 158, 255, 0.12);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+/* ---------- ENHANCED SKILL CARDS ---------- */
+.skill-category {
+  background: rgba(15, 20, 25, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(74,158,255,0.08);
+  border-radius: 12px;
+}
+
+/* ---------- TERMINAL GLASSMORPHISM ---------- */
+.terminal-window {
+  background: rgba(8, 12, 18, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(74,158,255,0.12);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,158,255,0.05);
+}
+
+/* ---------- NAV GLASSMORPHISM UPGRADE ---------- */
+#main-nav.scrolled {
+  background: rgba(8, 10, 14, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(74,158,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* ---------- HERO 3D DEPTH ---------- */
+#hero {
+  transform-style: preserve-3d;
+}
+
+.hero-name {
+  filter: drop-shadow(0 0 40px rgba(74,158,255,0.15));
+}
+
+/* ---------- RESPONSIVE: EXPERIENCE GRID ---------- */
+@media (max-width: 900px) {
+  .exp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .exp-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .exp-org-name {
+    font-size: 0.85rem;
+  }
+
+  .exp-role {
+    font-size: 1rem;
+  }
+}

@@ -342,23 +342,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 function initTilt() {
-  const tiltEls = document.querySelectorAll('.project-card, .cert-card, .edu-card, .about-card');
+  const tiltEls = document.querySelectorAll('.tilt-card, .project-card, .cert-card, .edu-card');
 
   tiltEls.forEach(el => {
     el.addEventListener('mousemove', e => {
       const rect   = el.getBoundingClientRect();
       const x      = e.clientX - rect.left;
       const y      = e.clientY - rect.top;
-      const xRel   = (x / rect.width  - 0.5) * 12;
-      const yRel   = (y / rect.height - 0.5) * 12;
+      const xRel   = (x / rect.width  - 0.5) * 16;
+      const yRel   = (y / rect.height - 0.5) * 16;
 
-      el.style.transform = `perspective(600px) rotateY(${xRel}deg) rotateX(${-yRel}deg) translateY(-6px)`;
-      el.style.transition = 'transform 0.1s linear';
+      el.style.transform = `perspective(800px) rotateY(${xRel}deg) rotateX(${-yRel}deg) translateZ(8px) translateY(-4px)`;
+      el.style.transition = 'transform 0.08s linear';
+
+      // Move glow to follow cursor
+      const glow = el.querySelector('.exp-card-glow');
+      if (glow) {
+        const xPct = (x / rect.width)  * 100;
+        const yPct = (y / rect.height) * 100;
+        glow.style.background = `radial-gradient(circle at ${xPct}% ${yPct}%, rgba(74,158,255,0.15) 0%, transparent 65%)`;
+        glow.style.inset = '0';
+        glow.style.width = '100%';
+        glow.style.height = '100%';
+        glow.style.top = '0';
+        glow.style.right = '0';
+        glow.style.borderRadius = 'inherit';
+      }
     });
 
     el.addEventListener('mouseleave', () => {
       el.style.transform = '';
-      el.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      el.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
     });
   });
 }
@@ -367,6 +381,97 @@ function initTilt() {
 if (window.innerWidth > 900) {
   initTilt();
 }
+
+/* ---- PARTICLE CANVAS ---- */
+(function initParticles() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let W, H, particles = [], mouse = { x: -9999, y: -9999 };
+  const PARTICLE_COUNT = 80;
+  const MAX_DIST       = 130;
+  const MOUSE_RADIUS   = 180;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x  = Math.random() * W;
+      this.y  = init ? Math.random() * H : -10;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = Math.random() * 0.4 + 0.1;
+      this.r  = Math.random() * 1.5 + 0.5;
+      this.alpha = Math.random() * 0.4 + 0.15;
+    }
+    update() {
+      // Subtle cursor repulsion
+      const dx = this.x - mouse.x;
+      const dy = this.y - mouse.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < MOUSE_RADIUS) {
+        const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.3;
+        this.vx += (dx / dist) * force;
+        this.vy += (dy / dist) * force;
+      }
+      // Dampen velocity
+      this.vx *= 0.97;
+      this.vy *= 0.97;
+
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.y > H + 10) this.reset(false);
+      if (this.x < -10 || this.x > W + 10) this.x = Math.random() * W;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(74,158,255,${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+  function drawLines() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx   = particles[i].x - particles[j].x;
+        const dy   = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < MAX_DIST) {
+          const alpha = (1 - dist / MAX_DIST) * 0.15;
+          ctx.strokeStyle = `rgba(74,158,255,${alpha})`;
+          ctx.lineWidth   = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawLines();
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
 
 const marqueeTrack = document.querySelector('.marquee-track');
 if (marqueeTrack) {
